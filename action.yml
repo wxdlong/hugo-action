@@ -1,4 +1,4 @@
-name: 'Hugo Action'
+name: 'Hugo in Action'
 description: 'Build hugo site, deploy to github page'
 branding:
   icon: 'award'  
@@ -8,11 +8,6 @@ inputs:
     description: 'which branch will publish'
     required: true
     default: 'master'
-outputs:
-  time:
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'wxdlong/hugo'
-  args:
-    - ${{ inputs.who-to-greet }}

@@ -1,5 +1,5 @@
 name: 'Hugo in Action'
-description: 'Build hugo site, deploy to github page'
+description: 'Build Hugo extended site, Deploy to GitHub Page'
 branding:
   icon: 'award'  
   color: 'green'
@@ -10,4 +10,4 @@ inputs:
     default: 'master'
 runs:
   using: 'docker'
-  image: 'wxdlong/hugo'
+  image: 'docker://wxdlong/hugo'

@@ -2,14 +2,14 @@
 
 set -e
 
-echo "======================  ENV ===================="
+echo -e "\033[35m======================  ENV ====================\033[0m"
 env
 echo "======================  ENV ===================="
 
 ACCESS_TOKEN=$1
-FOLDER=$2
-BRANCH=$3
-CNAME=$4
+BRANCH=$2
+CNAME=$3
+FOLDER='public'
 
 if [ -z "$ACCESS_TOKEN" ]; then
     echo "Please set access_token refer to https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line"

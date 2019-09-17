@@ -4,7 +4,7 @@ Build [Hugo](https://gohugo.io/) extended site, Deploy to [GitHub Pages](https:/
 
 ## Why
 
-Small docker, quickly build, simple use.
+Small docker, Quickly build, Simple use.
 
 ## How
 
@@ -29,11 +29,11 @@ Precondition: Config the  [Security Token](https://help.github.com/en/articles/c
         name: Build Hugo Pages
         steps:
         - name: Checkout code
-        uses: actions/checkout@v1
+          uses: actions/checkout@v1
 
         - name: Hugo site and deploy 2 github page
-        uses: wxdlong/hugo-action@master
-        with:
+          uses: wxdlong/hugo-action@master
+          with:
             access_token: ${{ secrets.ACCESS_TOKEN }}
             cname: 'https://ycat.top'
             branch: 'master'
@@ -53,11 +53,11 @@ Precondition: Config the  [Security Token](https://help.github.com/en/articles/c
         name: Build Hugo Pages
         steps:
         - name: Checkout code
-        uses: actions/checkout@v1
+          uses: actions/checkout@v1
 
         - name: Hugo site and deploy 2 github page
-        uses: wxdlong/hugo-action@master
-        with:
+          uses: wxdlong/hugo-action@master
+          with:
             access_token: ${{ secrets.ACCESS_TOKEN }}
             cname: 'https://ycat.top'
     ```
@@ -70,11 +70,13 @@ Precondition: Config the  [Security Token](https://help.github.com/en/articles/c
 |  Parameter   | Description |  Required  |  Default |
 |  ----  | ----  |  ----  | ----  |
 | access_token  | GitHub personal access token. Refer to [site](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)) |  YES | NULL |
-| branch  | The GitHub page repo branch you want push. Use `gh-pages` for Unit, use `master` for personal | YES | `gh-pages` |
+| branch  | The GitHub page repo branch you want push. <br/>Use `gh-pages` for Unit, use `master` for personal | YES | `gh-pages` |
 | cname  | Your DNS name | NO | NULL |
 
 
 ## Base on
 
-Hugo Version: 
-Git Version: 
+Hugo Version: v0.59.0-DEV/extended linux/amd64     
+Git Version: 2.20.1
+
+![Example](example.png)

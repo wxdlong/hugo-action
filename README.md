@@ -1,9 +1,11 @@
-# What
+## What
 
-Build hugo site, deploy to github page.
+Build Hugo extended site, Deploy to GitHub Page
 
-# Why
+## Why
+
 Small docker, quickly build, simple use.
 
-## 
+## How
 
+### Parameters

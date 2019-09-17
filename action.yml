@@ -1,13 +1,27 @@
 name: 'Hugo in Action'
 description: 'Build Hugo extended site, Deploy to GitHub Page'
-branding:
-  icon: 'award'  
-  color: 'green'
 inputs:
-  branch: # id of input
-    description: 'which branch will publish'
+  access_token:
+    description: 'Github access token,'
     required: true
-    default: 'master'
+  folder:
+    description: 'Which folder will push'
+    required: false
+    default: 'public'
+  branch: # id of input
+    description: 'Which branch will publish. Default value is gh-pages for unit|organization, If for personal set value to master'
+    required: false
+    default: 'gh-pages'
+  cname:
+    description: 'Github page cname. eg: https://ycat.top'
+    required: false
+    default: ''
+
 runs:
   using: 'docker'
-  image: 'docker://wxdlong/hugo'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.access_token }}
+    - ${{ inputs.folder }}
+    - ${{ inputs.branch }}
+    - ${{ inputs.cname }}

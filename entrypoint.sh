@@ -1,10 +1,29 @@
 #!/bin/sh
 
 set -e
+cat <<EOF
 
-echo -e "\033[35m======================  ENV ====================\033[0m"
+██╗  ██╗██╗   ██╗ ██████╗  ██████╗     ██╗███╗   ██╗     █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗
+██║  ██║██║   ██║██╔════╝ ██╔═══██╗    ██║████╗  ██║    ██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║
+███████║██║   ██║██║  ███╗██║   ██║    ██║██╔██╗ ██║    ███████║██║        ██║   ██║██║   ██║██╔██╗ ██║
+██╔══██║██║   ██║██║   ██║██║   ██║    ██║██║╚██╗██║    ██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║
+██║  ██║╚██████╔╝╚██████╔╝╚██████╔╝    ██║██║ ╚████║    ██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║
+╚═╝  ╚═╝ ╚═════╝  ╚═════╝  ╚═════╝     ╚═╝╚═╝  ╚═══╝    ╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝                                                                                               
+EOF
+function logI() {
+    echo -e "\033[35m$1\033[0m"
+}
+
+function logE() {
+    echo -e "\033[31m$1\033[0m"
+
+}
+
+logI "========================= ENV"
 env
-echo "======================  ENV ===================="
+logI "Contact wxdlong@qq.com If any problem."
+logI "$(hugo version)"
+logI "$(git version)"
 
 ACCESS_TOKEN=$1
 BRANCH=$2
@@ -12,34 +31,26 @@ CNAME=$3
 FOLDER='public'
 
 if [ -z "$ACCESS_TOKEN" ]; then
-    echo "Please set access_token refer to https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line"
+    logE "Please set access_token refer to https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line"
     exit 1
 fi
 
 if [ -z "$BRANCH" ]; then
-    echo "if you are personal page, set branch to master"
-    echo "if you are origianztaion page, set branch gh-pages"
-    echo "if you just want test, the default branch is test-wxdlong-page"
+    logE "if you are personal page, set branch to master"
+    logE "if you are origianztaion page, set branch gh-pages"
     exit 1
 fi
 
-if [ -z "$FOLDER" ]; then
-    echo "which content you want deploy. related path to the root repo"
-    exit 1
-fi
-
-echo "====================  Hugo Site =================="
+logI "========================= Hugo Site "
 chmod +x /usr/local/bin/hugo
 /usr/local/bin/hugo
-
-echo "====================  Hugo Site =================="
 
 cd $FOLDER
 
 if [ ! -z "$CNAME" ]; then
     {
         echo "${CNAME}" >CNAME
-        echo "write ${CNAME} to CNAME"
+        logI "write ${CNAME} to CNAME"
     }
 fi
 
@@ -53,12 +64,11 @@ echo "git config user.name=${COMMIT_NAME}"
 git config --global user.email "${COMMIT_EMAIL}" &&
     git config --global user.name "${COMMIT_NAME}"
 
-echo "====================  Push page =================="
+logI "=========================  Push page "
 
 git init
 git add --all
 git commit -m "${COMMIT_MSG}"
-echo "git remote add origin ${REMOTE}"
 git remote add origin ${REMOTE}
 git push --force origin master:${BRANCH}
-echo "====================   Success  =================="
+logI "=========================   Success "

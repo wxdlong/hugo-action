@@ -1,15 +1,10 @@
 ## What
 
-Build [Hugo](https://gohugo.io/) extended site, Deploy to [GitHub Pages](https://pages.github.com/)
-
-## Why
-
-Small docker, Quickly build, Simple use.
-
-## How
-
+Build [Hugo](https://gohugo.io/) extended site, Deploy to [GitHub Pages](https://pages.github.com/)   
+Small docker, Quickly build, Simple use.   
 The Action will generator Hugo pages in `public` folder, Then publish to the target branch.
-### Quick start
+
+## Quick start
 
 Precondition: Config the  [Security Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with name `ACCESS_TOKEN`
 

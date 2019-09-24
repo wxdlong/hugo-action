@@ -1,4 +1,4 @@
-FROM wxdlong/hugo as hugo
+FROM docker.pkg.github.com/wxdlong/hugo/hugo as hugo
 FROM alpine/git:1.0.7
 
 LABEL "com.github.actions.name"="Hugo in Action" \
